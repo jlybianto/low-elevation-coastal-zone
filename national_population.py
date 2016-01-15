@@ -1,3 +1,8 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
+# The collections module implements specialized container data types.
 import collections
 
 population_dict = collections.defaultdict(int)
