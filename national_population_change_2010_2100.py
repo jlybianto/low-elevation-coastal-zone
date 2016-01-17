@@ -1,8 +1,19 @@
+# ----------------
+# IMPORT PACKAGES
+# ----------------
+
+# The collections module implements specialized container data types.
 import collections
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
+# Create a an empty dictionary to contain data
 population_2010_dict = collections.defaultdict(int)
 population_2100_dict = collections.defaultdict(int)
 
+# Open input file to be processed
 with open("lecz-urban-rural-population-land-area-estimates-v2-csv/lecz-urban-rural-population-land-area-estimates_continent-90m.csv", "rU") as inputFile:
 	header = next(inputFile)
 	
@@ -17,6 +28,7 @@ with open("lecz-urban-rural-population-land-area-estimates-v2-csv/lecz-urban-rur
 	population_2100_2010_dict = {key: population_2100_dict[key] - population_2010_dict.get(key, 0) for key in population_2100_dict.keys()}
 	population_2100_2010_dict = {key: population_2100_2010_dict[key] / population_2010_dict.get(key, 0) for key in population_2100_2010_dict.keys()}
 
+# Create an output file of modified or processed data
 with open("national_population_change_2010_2100.csv", "w") as outputFile:
 	outputFile.write("continent,population_percent_change\n")
 
