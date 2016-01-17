@@ -5,8 +5,14 @@
 # The collections module implements specialized container data types.
 import collections
 
+# ----------------
+# OBTAIN DATA
+# ----------------
+
+# Create a an empty dictionary to contain data
 population_dict = collections.defaultdict(int)
 
+# Open input file to be processed
 with open("lecz-urban-rural-population-land-area-estimates-v2-csv/lecz-urban-rural-population-land-area-estimates_continent-90m.csv", "rU") as inputFile:
 	header = next(inputFile)
 	
@@ -16,6 +22,7 @@ with open("lecz-urban-rural-population-land-area-estimates-v2-csv/lecz-urban-rur
 		if line[1] == "Total National Population":
 			population_dict[line[0]] += line[5]
 
+# Create an output file of modified or processed data
 with open("national_population.csv", "w") as outputFile:
 	outputFile.write("continent,2010_population\n")
 
